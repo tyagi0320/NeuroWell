@@ -1,0 +1,8 @@
+1. Consider any python version between 9 and 12 to run tensorflow
+2. Create virtual env: python -m venv venv
+source venv/bin/activate   # On Mac/Linux
+venv\Scripts\activate      # On Windows
+3. Install dependencies: 
+pip install tensorflow
+pip install flask flask-cors tensorflow numpy pandas joblib scikit-learn
+4. Now do: python app.py

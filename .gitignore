@@ -1,0 +1,19 @@
+# Node.js & React
+node_modules/
+build/
+
+# Python & Virtual Environments
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Docker
+*.env
+*.log
+docker-compose.override.yml
+
+# OS-Specific
+.DS_Store
+Thumbs.db
