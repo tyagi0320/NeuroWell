@@ -13,16 +13,15 @@ Neurowell is an AI-driven mental wellness platform designed to analyze stress le
 ## 🏗️ Tech Stack
 ### **Frontend**
 - React.js
-- CSS (Tailwind CSS, if applicable)
+- CSS (Tailwind CSS)
 
 ### **Backend**
 - Flask (Python-based REST API)
-- MongoDB (if used for storing user data)
-
+  
 ### **Machine Learning & AI**
 - TensorFlow / Keras
-- Pandas, NumPy
-- ANN (Artificial Neural Network) for stress level prediction
+- Pandas, NumPy , Sklearn
+- ANN (Artificial Neural Network) 
 
 ## 🔬 Model Training & Evaluation
 - The **Kaggle dataset** was used for training the ANN model.
@@ -35,6 +34,4 @@ This project is licensed under the MIT License.
 
 ---
 
-💡 **Contributions are welcome!** Feel free to fork this repo and enhance Neurowell with additional features.
 
-🔗 **GitHub Repository:** [Insert Repo Link Here]
