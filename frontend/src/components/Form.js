@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import "./Form.css";
+import { getRecommendations } from "./Suggestions"; // Import the function
+
 
 // Define form validation schema
 const schema = yup.object().shape({
@@ -19,7 +21,9 @@ const schema = yup.object().shape({
 
 const Form = () => {
   const [result, setResult] = useState(null);
-  const [darkMode, setDarkMode] = useState(false); // State for dark/light mode
+  const [recommendations, setRecommendations] = useState(null); 
+  const [darkMode, setDarkMode] = useState(false); 
+
 
   const {
     register,
@@ -64,9 +68,16 @@ const Form = () => {
 
       console.log("Response received:", response.data);
       setResult(response.data.prediction);
+      // Extract the depression chance percentage from the prediction message
+      const depressionChance = parseFloat(response.data.prediction.match(/\d+\.\d+/)[0]);
+
+      // Get recommendations based on the depression chance
+      const recommendations = getRecommendations(depressionChance);
+      setRecommendations(recommendations);
     } catch (error) {
       console.error("Error:", error);
       setResult("Error making prediction");
+      setRecommendations(null);
     }
   };
 
@@ -260,6 +271,29 @@ const Form = () => {
             }`}>
               Prediction: <span className={`${darkMode ? "text-blue-400" : "text-blue-800"}`}>{result}</span>
             </p>
+          </div>
+        )}
+
+       {/* Recommendations Display */}
+       {recommendations && (
+          <div className={`mt-8 p-4 rounded-xl border transition-all duration-300 ${
+            darkMode ? "bg-gray-700 border-gray-600" : "bg-gradient-to-r from-purple-50 to-blue-50 border-gray-200"
+          }`}>
+            <p className={`text-lg font-semibold ${
+              darkMode ? "text-purple-400" : "text-purple-800"
+            }`}>
+              Recommendations:
+            </p>
+            <p className={`mt-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+              {recommendations.message}
+            </p>
+            <ul className="list-disc list-inside mt-2">
+              {recommendations.resources.map((resource, index) => (
+                <li key={index} className={`${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                  {resource}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </form>
