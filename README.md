@@ -14,7 +14,7 @@ Neurowell is an AI-driven mental wellness platform designed to analyze stress le
 
 ---
 
-## 🚀 Features
+## Features
 - **AI-Based Stress Prediction**: Uses an **Artificial Neural Network (ANN)** to predict stress levels.
 - **Advanced Data Processing**: Leverages **Pandas, NumPy, and TensorFlow** for data preprocessing and model training.
 - **Web-Based Platform**: Built with **React.js (Frontend) and Flask (Backend)**.
